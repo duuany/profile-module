@@ -1,0 +1,20 @@
+{
+    "name": "duuany/profile-module",
+    "description": "A laravel module",
+    "type": "laravel-module",
+    "authors": [
+        {
+            "name": "Jorge 'jjsquady' Junior",
+            "email": "jorge.techinfo@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modules\\Profile\\": ""
+        }
+    },
+    "require": {
+        "laracasts/flash": "^3.0",
+        "duuany/laravel-module-installer": "^1.0"
+    }
+}
