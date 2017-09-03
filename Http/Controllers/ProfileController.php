@@ -4,6 +4,7 @@ namespace Modules\Profile\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Lang;
 use Modules\Profile\Http\Requests\ProfileFormRequest;
 use Modules\Profile\Models\Profile;
 
@@ -44,9 +45,9 @@ class ProfileController extends Controller
         $user = auth()->user();
         $user->profile()->save(Profile::on()->make($request->all()));
 
-        flash()->success(Lang::get('profile::' . config('app.locale') . '.created'));
+        flash()->success(Lang::get('profile::messages.created'));
 
-        return redirect()->route('profile.show', $user);
+        return $this->redirectToUserProfile();
     }
 
     /**
@@ -85,9 +86,9 @@ class ProfileController extends Controller
     {
         $profile->update($request->all());
 
-        flash()->info(Lang::get('profile::' . config('app.locale') . '.updated'));
+        flash()->info(Lang::get('profile::messages.updated'));
 
-        return redirect()->route('profile.show', auth()->user());
+        return $this->redirectToUserProfile();
     }
 
     /**
@@ -101,8 +102,13 @@ class ProfileController extends Controller
 
         $profile->delete();
 
-        flash()->error(Lang::get('profile::' . config('app.locale') . '.deleted'));
+        flash()->error(Lang::get('profile::messages.deleted'));
 
-        return redirect()->route('profile.show', auth()->user());
+        return $this->redirectToUserProfile();
+    }
+
+    protected function redirectToUserProfile()
+    {
+        return redirect()->route('profile::show', auth()->user());
     }
 }

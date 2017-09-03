@@ -8,9 +8,7 @@
 // Flash messages
 //---------------------------------------------
 return [
-    'messages' => [
-        'created' => 'Profile created successfully.',
-        'updated' => 'Profile updated with success.',
-        'deleted' => 'OK. Profile deleted.'
-    ]
+    'created' => 'Profile created successfully.',
+    'updated' => 'Profile updated successfully.',
+    'deleted' => 'OK. Profile deleted.'
 ];
